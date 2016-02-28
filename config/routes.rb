@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :products
   controller :sessions do
     get 'login' => :new, :as => :login
     post 'login' => :create, :as => :authenticate
