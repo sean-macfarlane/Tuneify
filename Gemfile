@@ -3,6 +3,11 @@ source 'https://rubygems.org'
 gem 'shopify_app'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
+
+gem 'rails_12factor', group: :production
+gem 'paperclip'
+gem 'rails-ajax'
+gem 'bootstrap-sass'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
