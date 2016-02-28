@@ -27,12 +27,11 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-new_product = ShopifyAPI::Product.new
-new_product.title = "Burton Custom Freestlye 151"
-new_product.product_type = "Snowboard"
-new_product.vendor = "Burton"
-new_product.save
-	
+	new_product = ShopifyAPI::Product.new
+	new_product.title = "Burton Custom Freestlye 151"
+	new_product.product_type = "Snowboard"
+	new_product.vendor = "Burton"
+	new_product.save	
 	
     respond_to do |format|
       if @product.save

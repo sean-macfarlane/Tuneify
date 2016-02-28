@@ -10,9 +10,11 @@
 <% end %>
 
 <h2>Products</h2>
-pls
+shopify
 <ul>
   <% @products.each do |product| %>
     <li><%= link_to product.title, "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top" %></li>
   <% end %>
 </ul>
+
+
