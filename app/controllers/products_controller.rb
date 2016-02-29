@@ -34,7 +34,7 @@ class ProductsController < AuthenticatedController
 	new_product.body_html = @product.description
 	new_product.product_type = "Song"
 	new_product.vendor = "Tuneify"
-	product.variants << ShopifyAPI::Variant.new(
+	new_product.variants << ShopifyAPI::Variant.new(
 	  :price => @product.price,
 	)
 	new_product.save	
