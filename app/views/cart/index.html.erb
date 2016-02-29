@@ -29,7 +29,5 @@
 	</div>
 </div>
 <div class="row featurette">
-	<% if !@cart.blank? %>
-		<% link_to "Checkout", cart_checkout_path %>
-	<% end %>
+	<% link_to "Checkout", cart_checkout_path %>
 </div>
