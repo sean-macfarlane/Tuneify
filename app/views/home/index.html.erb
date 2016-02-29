@@ -21,7 +21,7 @@ shopify
 		
 	</div>
 	<div class="col-md-8">
-		<h2><%= link_to product.title, product %></h2>
+		<h2><%= link_to product.title, "https://#{@shop_session.url}/admin/products/#{product.id}" %></h2>
 		<p><%= product.body_html %></p>
 		<p><%= number_to_currency(product.price, :unit => '$') %></p>
 	</div></td>
