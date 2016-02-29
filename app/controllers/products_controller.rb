@@ -29,10 +29,16 @@ class ProductsController < AuthenticatedController
     @product = Product.new(product_params)
 	
 	shop = ShopifyAPI::Shop.current
-	@newproduct = {"title" =>  @product.name, "vendor" => "tuneify", "body_html" => @product.description, "price" => @product.price}
-    
-    @shopify_product = ShopifyAPI::Product.new(@newproduct)
-	@shopify_product.save	
+    new_product = ShopifyAPI::Product.new
+	new_product.title = @product.name
+	new_product.body_html = @product.description
+	new_product.product_type = "Song"
+	new_product.vendor = "Tuneify"
+	@newproduct.variants = ShopifyAPI::Variant.new(
+	  :option1              => "Large",
+	  :price                => 12.95,
+	)   
+	new_product.save	
 	
     respond_to do |format|
       if @product.save
