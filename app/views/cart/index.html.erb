@@ -1,6 +1,7 @@
 <h1>Cart: </h1>
 
 <% total = 0 %>
+<% checkout_url = "http://tuneify-2.myshopify.com/cart/" %>
 
 <% @cart.each do | id | %>
 	<div class="row featurette">
@@ -14,6 +15,7 @@
 		</div>
 	</div>
 	<% total += product.price %>
+	<% checkout_url = checkout_url + product.shopify_id + ":1," %>
 <% end %>	
 <hr>
 <div class="row featurette">
@@ -32,6 +34,6 @@
 <div class="col-md-8">
 </div>
 <div class="col-md-4">
-	<%= link_to "Checkout", cart_checkout_path %>
+	<%= link_to "Checkout", checkout_url %>
 </div>
 </div>
