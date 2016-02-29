@@ -32,11 +32,8 @@ class CartController < AuthenticatedController
 	end
 	
 	def checkout
-		checkout_url = "http://tuneify-2.myshopify.com/cart/"
-		cart.each do |id|
-			product = Product.find_by_id(id)
-			checkout_url << product.shopify_id << ":1,"
-		end
+		checkout_url = "http://tuneify-2.myshopify.com/cart/16979615427:1"
+		
 		session.delete(:cart)
 		redirect_to checkout_url
 	end
