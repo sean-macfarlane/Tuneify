@@ -56,19 +56,15 @@ class ProductsController < AuthenticatedController
 	new_product.product_type = "Song"
 	new_product.vendor = "Tuneify"
 
-	new_product.options << ShopifyAPI::Option.new(
-		:name     => "option1"
-	)
-	
-	new_product.variants << ShopifyAPI::Variant.new(
-	  :option1              => @product.name,
-	  :price                => @product.price,
+	new_product.variants = ShopifyAPI::Variant.new(
+	  :option1              => "pls",
+	  :price                => 1,
 	  :requires_shipping => false
 	)
 	
 	new_product.save 
 	
-	@product.shopify_id = new_product.variants.id
+	@product.shopify_id = new_product.variants[0].id
 	
     respond_to do |format|
       if @product.save
