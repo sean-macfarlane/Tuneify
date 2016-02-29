@@ -30,5 +30,13 @@ class CartController < AuthenticatedController
 			@cart = {}
 		end
 	end
+	
+	def checkout
+		@checkout_url = "http://tuneify-2.myshopify.com/cart/"
+		@cart.each do |id|
+			product = Product.find_by_id(id)
+			@checkout_url << product.shopify_id << ":1,"
+		end
+		redirect_to @checkout_url
 end
 	

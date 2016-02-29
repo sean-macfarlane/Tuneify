@@ -56,15 +56,16 @@ class ProductsController < AuthenticatedController
 	new_product.product_type = "Song"
 	new_product.vendor = "Tuneify"
 
-	@variant = {"option1" => "test", "price" => 1, "requires_shipping" => false}
-	new_product.variants = ShopifyAPI::Variant.new(@variant)	
+	new_product.variants = ShopifyAPI::Variant.new()	
+	new_product.variants[0].price = 3
+	new_product.variants[0].requires_shipping = false
 	new_product.save 
 	
 	@product.shopify_id = new_product.variants[0].id
 	
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to @product, success: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -78,7 +79,7 @@ class ProductsController < AuthenticatedController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to @product, success: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -92,7 +93,7 @@ class ProductsController < AuthenticatedController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to products_url, success: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

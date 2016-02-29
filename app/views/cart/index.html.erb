@@ -2,7 +2,7 @@
 
 <% total = 0 %>
 
-<% @cart.each do | id, quantity | %>
+<% @cart.each do | id | %>
 	<div class="row featurette">
 	<% product = Product.find_by_id(id) %>
 		<div class="col-md-8">
@@ -29,5 +29,7 @@
 	</div>
 </div>
 <div class="row featurette">
-	
+	<% if !@cart.blank? %>
+		<% button_to "Checkout", action: checkout %>
+	<% end %>
 </div>
