@@ -16,17 +16,24 @@ class ProductsController < AuthenticatedController
   # GET /products/new
   def new
     @product = Product.new
+	@categories = Category.all
   end
 
   # GET /products/1/edit
   def edit
 	@product = Product.find(params[:id])
+	@categories = Category.all
   end
+  
+  def show_categories
+      @category = Category.find(params[:id])
+   end
 
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    @categories = Category.all
+	@product = Product.new(product_params)
 	
 	shop = ShopifyAPI::Shop.current
     new_product = ShopifyAPI::Product.new
@@ -34,10 +41,8 @@ class ProductsController < AuthenticatedController
 	new_product.body_html = @product.description
 	new_product.product_type = "Song"
 	new_product.vendor = "Tuneify"
-	new_product.variants = ShopifyAPI::Variant.new(
-	  :option1              => "Large",
-	  :price                => 12.95,
-	)   
+	@variants = {"price" => 12.95, "requires_shipping" => false}
+	new_product.variants = ShopifyAPI::Variant.new(@variants)   
 	new_product.save	
 	
     respond_to do |format|
