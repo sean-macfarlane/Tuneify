@@ -15,7 +15,7 @@
 		</div>
 	</div>
 	<% total += product.price %>
-	<% checkout_url = checkout_url + product.shopify_id + ":1," %>
+	<% checkout_url = checkout_url + product.shopify_id.to_s + ":1," %>
 <% end %>	
 <hr>
 <div class="row featurette">
