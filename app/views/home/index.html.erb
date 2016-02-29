@@ -21,8 +21,8 @@ shopify
 		
 	</div>
 	<div class="col-md-8">
-		<h2><%= link_to product.name, product %></h2>
-		<p><%= product.description %></p>
+		<h2><%= link_to product.title, product %></h2>
+		<p><%= product.body_html %></p>
 		<p><%= number_to_currency(product.price, :unit => '$') %></p>
 	</div></td>
 </div></tr>
