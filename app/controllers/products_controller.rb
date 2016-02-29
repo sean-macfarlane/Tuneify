@@ -56,12 +56,12 @@ class ProductsController < AuthenticatedController
 	new_product.product_type = "Song"
 	new_product.vendor = "Tuneify"
 	new_product.variants = ShopifyAPI::Variant.new()	
-	
+	new_product.save 
 	@product.shopify_id = new_product.variants[0].id
 	
     respond_to do |format|
       if @product.save
-		new_product.save 
+		
         format.html { redirect_to @product, success: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
