@@ -30,12 +30,5 @@ class CartController < AuthenticatedController
 			@cart = {}
 		end
 	end
-	
-	def checkout
-		checkout_url = "http://tuneify-2.myshopify.com/cart/16979615427:1"
-		
-		session.delete(:cart)
-		redirect_to "http://tuneify-2.myshopify.com/cart/16979615427:1"
-	end
 end
 	

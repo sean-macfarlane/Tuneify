@@ -21,6 +21,7 @@
 		  <% if current_user.isAdmin %>
 		  <li><%= link_to 'Admin', categories_path %></li>
 		  <% end %>
+		  <li><%= link_to 'Cart', cart_path %></li>
 		  <li><%= link_to 'Upload', new_product_path %></li>
 		  <li class="round-image-50"><%= image_tag(current_user.image.url) %></li>
           <li class="dropdown">
