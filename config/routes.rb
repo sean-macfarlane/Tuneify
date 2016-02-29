@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'cart' => 'cart#index' 
   get 'cart/clear' => 'cart#clearCart'
   get 'cart/:id' => 'cart#add'
-
+  get 'cart/thankyou'
   get 'signup'  => 'users#new'
   get    'user_login'   => 'user_sessions#new'
   post   'user_login'   => 'user_sessions#create'
