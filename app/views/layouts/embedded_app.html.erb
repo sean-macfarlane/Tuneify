@@ -10,9 +10,18 @@
   <body>
     <div class="app-wrapper">
       <div class="app-content">
-        <main role="main">
-          <%= yield %>
-        </main>
+        <div id="menu">
+			<%= render :partial =>'layouts/navbar' %>
+		</div>
+		<div id="player">
+			<%= render :partial =>'layouts/player' %>
+		</div>
+		<div id="content" class="container-fluid">
+		<% flash.each do |key, value| %>
+			<div class="alert alert-<%= key %>"><%= value %></div>
+		  <% end %>
+			<%= yield %>
+		</div>
       </div>
     </div>
 

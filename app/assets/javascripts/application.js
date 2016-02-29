@@ -11,6 +11,27 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery.history
+//= require jquery.rails-ajax
+//= require RailsAjax-Config
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+
+
+ $(document).on('page:change', function () {
+    var audioSection = $('section#song');
+	$(document).on("click", 'a.play_song', function(e) {
+        var audio = $('<audio>', {
+             controls : 'controls'
+        });
+ 
+        var url = $(this).attr('href');
+        $('<source>').attr('src', url).appendTo(audio);
+        audioSection.html(audio);
+        return false;
+    });
+});
