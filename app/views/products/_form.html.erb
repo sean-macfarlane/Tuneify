@@ -23,6 +23,10 @@
     <%= f.label :price %><br>
     <%= f.text_field :price %>
   </div>
+  <div class="field">
+   <label for = "category_id">Category</label>:
+   <%= collection_select(:product, :category_id, @categories, :id, :name, prompt: true) %>
+  </div>
 <div class="field">
   <%= f.label :audio %><br>
   <%= f.file_field :audio%>

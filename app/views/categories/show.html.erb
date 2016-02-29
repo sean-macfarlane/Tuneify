@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<h4><%= link_to '< Back', categories_path %></h4>
+
+<h1> <%= @category.name %>:</h1>
+
+<% if @category.products.blank? %>
+<p>There is currently no music in this category right now.</p>
+<% else %>
+<table class="table table-bordered">
+<% @category.products.each do |product| %>
+	<tr>
+	<td><div class="row featurette">
+		<div class="col-md-4">
+			<%= link_to image_tag(product.image.url, class: 'media-object picture'), product.image.url, class: "picture" %>
+		</div>
+		<div class="col-md-8">
+			<h2><%= link_to product.name, product %></h2>
+			<p><%= product.description %></p>
+		</div>
+	</div></td>
+	</tr>
+<% end %>
+</table>
+<% end %>
