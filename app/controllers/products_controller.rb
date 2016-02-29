@@ -27,6 +27,8 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+	
+	shop = ShopifyAPI::Shop.current
 	new_product = ShopifyAPI::Product.new
 	new_product.title = "Burton Custom Freestlye 151"
 	new_product.product_type = "Snowboard"
