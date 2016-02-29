@@ -30,6 +30,6 @@
 </div>
 <div class="row featurette">
 	<% if !@cart.blank? %>
-		<% button_to "Checkout", action: checkout %>
+		<% link_to "Checkout", cart_checkout_path %>
 	<% end %>
 </div>
