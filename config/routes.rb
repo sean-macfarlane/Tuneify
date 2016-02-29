@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'cart/clear' => 'cart#clearCart'
   get 'cart/:id' => 'cart#add'
   get 'thankyou' => 'thankyou#index'
+  match 'thankyou/:id' => 'thankyou#download', :as => :download
   get 'signup'  => 'users#new'
   get    'user_login'   => 'user_sessions#new'
   post   'user_login'   => 'user_sessions#create'
