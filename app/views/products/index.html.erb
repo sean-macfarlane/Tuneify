@@ -11,7 +11,7 @@
 	<div class="col-md-8">
 		<h2><%= link_to product.name, product %></h2>
 		<p><%= product.description %></p>
-		 <%= link_to "Delete", {:action => 'delete', :id => product.id},
+		 <%= link_to "Delete", {:action => 'destroy', :id => product.id},
       data: { confirm: "Are you sure?" } %>
 	</div></td>
 </div></tr>
