@@ -29,10 +29,10 @@ class ProductsController < AuthenticatedController
     @product = Product.new(product_params)
 	
 	shop = ShopifyAPI::Shop.current
-	@newtodo = {"price" => 2, "title" =>  @product.name, "vendor" => "tuneify", "body_html" => @product.description}
+	@newproduct = {"title" =>  @product.name, "vendor" => "tuneify", "body_html" => @product.description, "price" => @product.price}
     
-    @todo = ShopifyAPI::Product.new(@newtodo)
-	@todo.save	
+    @shopify_product = ShopifyAPI::Product.new(@newproduct)
+	@shopify_product.save	
 	
     respond_to do |format|
       if @product.save

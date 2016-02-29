@@ -11,10 +11,23 @@
 
 <h2>Products</h2>
 shopify
-<ul>
-  <% @products.each do |product| %>
-    <li><%= link_to product.title, "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top" %></li>
-  <% end %>
-</ul>
+<% if @products.blank? %>
+<p>There is currently no music in the system right now.</p>
+<% else %>
+<table class="table table-bordered">
+<% @products.each do |product| %>
+  <tr><div class="row featurette">
+<td><div class="col-md-4">
+		
+	</div>
+	<div class="col-md-8">
+		<h2><%= link_to product.name, product %></h2>
+		<p><%= product.description %></p>
+		<p><%= number_to_currency(product.price, :unit => '$') %></p>
+	</div></td>
+</div></tr>
+<% end %>
+</table>
+<% end %>
 
 
