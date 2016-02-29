@@ -3,8 +3,7 @@
    <li>
    <%= link_to c.name, {:action => 'show', :id => c.id} -%>
    <b> <%= link_to 'Edit', {:action => 'edit', :id => c.id} %></b>
-   <b> <%= link_to "Delete", {:action => 'delete', :id => c.id},
-      data: { confirm: "Are you sure?" } %></b>
+   <b> <%= link_to 'Destroy', c, method: :delete, data: { confirm: 'Are you sure?' } %></b>
 </li>
    <% end %>
 </ul>

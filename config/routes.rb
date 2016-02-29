@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   root :to => 'products#index'
   
+  get 'products/list'
   get 'cart' => 'cart#index' 
   get 'cart/clear' => 'cart#clearCart'
   get 'cart/:id' => 'cart#add'
