@@ -30,9 +30,11 @@ class ProductsController < AuthenticatedController
 	
 	shop = ShopifyAPI::Shop.current
 	new_product = ShopifyAPI::Product.new
-	new_product.title = "Burton Custom Freestlye 151"
-	new_product.product_type = "Snowboard"
-	new_product.vendor = "Burton"
+	new_product.title = @product.name
+	new_product.description = @product.description
+	new_product.product_type = "Song"
+	new_product.vendor = "Tuneify"
+	new_product.price = @product.price
 	new_product.save	
 	
     respond_to do |format|
