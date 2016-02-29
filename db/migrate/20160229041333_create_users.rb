@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
 	  t.attachment :image
-	  t.int :isAdmin
+	  t.integer :isAdmin
       t.timestamps null: false
     end
   end
