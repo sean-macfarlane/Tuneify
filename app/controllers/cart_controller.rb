@@ -38,5 +38,6 @@ class CartController < AuthenticatedController
 			@checkout_url << product.shopify_id << ":1,"
 		end
 		redirect_to @checkout_url
+	end
 end
 	
