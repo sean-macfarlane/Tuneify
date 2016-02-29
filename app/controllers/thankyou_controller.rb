@@ -10,9 +10,8 @@ class ThankyouController < AuthenticatedController
 	
 	def download
 	@product = Product.find(params[:id])
-
-	  data = open(@product.audio.url) 
-	  send_data data.read, filename: @product.audio_file_name, type: @product.audio_content_type, disposition: 'inline', stream: 'true', buffer_size: '4096' 
+	
+	  send_file @product.audio.url, filename: @product.audio_file_name, type: @product.audio_content_type, disposition: 'attachment'
 	end
 end
 	
