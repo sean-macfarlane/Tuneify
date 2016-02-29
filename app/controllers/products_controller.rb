@@ -57,8 +57,6 @@ class ProductsController < AuthenticatedController
 	new_product.vendor = "Tuneify"
 
 	new_product.variants = ShopifyAPI::Variant.new()	
-	new_product.variants[0].price = 3
-	new_product.variants[0].requires_shipping = false
 	new_product.save 
 	
 	@product.shopify_id = new_product.variants[0].id
