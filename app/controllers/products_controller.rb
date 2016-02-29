@@ -7,6 +7,10 @@ class ProductsController < AuthenticatedController
     @products = Product.all
   end
   
+  def list
+    @products = Product.all
+  end
+  
   # GET /products/1
   # GET /products/1.json
   def show
@@ -51,9 +55,20 @@ class ProductsController < AuthenticatedController
 	new_product.body_html = @product.description
 	new_product.product_type = "Song"
 	new_product.vendor = "Tuneify"
-	@variants = {"price" => 12.95, "requires_shipping" => false}
-	new_product.variants = ShopifyAPI::Variant.new(@variants)   
-	new_product.save	
+
+	new_product.options << ShopifyAPI::Option.new(
+		:name     => "option1"
+	)
+	
+	new_product.variants << ShopifyAPI::Variant.new(
+	  :option1              => @product.name,
+	  :price                => @product.price,
+	  :requires_shipping => false
+	)
+	
+	new_product.save 
+	
+	@product.shopify_id = new_product.variants.id
 	
     respond_to do |format|
       if @product.save
