@@ -7,7 +7,7 @@
 			<p><%= product.description %></p>		
 		</div>
 		<div class="col-md-4">
-			<%= link_to "Download", product.audio.url(:original, false) %>	
+			<%= link_to "Download", product.audio.url(:original, false), remote:false %>	
 		</div>
 	</div>
 <% end %>	
