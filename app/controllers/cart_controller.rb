@@ -30,5 +30,6 @@ class CartController < AuthenticatedController
 			@cart = {}
 		end
 	end
+		
 end
 	
