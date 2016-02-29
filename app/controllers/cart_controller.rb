@@ -31,5 +31,12 @@ class CartController < AuthenticatedController
 		end
 	end
 		
+	def thankyou
+		if session[:cart] 
+			@cart = session[:cart]
+		else
+			redirect_to root_path
+		end
+	end
 end
 	
