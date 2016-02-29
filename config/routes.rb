@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :categories
   resources :products
   controller :sessions do
     get 'login' => :new, :as => :login
