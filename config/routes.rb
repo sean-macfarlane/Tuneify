@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :products
   resources :users
 
-  root :to => 'home#index'
+  root :to => 'products#index'
   
   get 'cart' => 'cart#index' 
   get 'cart/clear' => 'cart#clearCart'
