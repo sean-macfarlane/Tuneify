@@ -5,11 +5,11 @@
     <title>Tuneify</title>
     <%= stylesheet_link_tag 'application' %>
     <%= csrf_meta_tags %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </head>
 
   <body>
-    <div class="app-wrapper">
-      <div class="app-content">
+ 
         <div id="menu">
 			<%= render :partial =>'layouts/navbar' %>
 		</div>
@@ -22,8 +22,7 @@
 		  <% end %>
 		<%= yield %>
 		</div>
-      </div>
-    </div>
+
 
     <script src="//cdn.shopify.com/s/assets/external/app.js?<%= Time.now.strftime('%Y%m%d%H') %>"></script>
 
@@ -35,8 +34,6 @@
         forceRedirect: false
       });
     </script>
-
-    <%= javascript_include_tag 'application', "data-turbolinks-track" => true %>
 
     <% if content_for?(:javascript) %>
       <div id="ContentForJavascript" data-turbolinks-temporary>

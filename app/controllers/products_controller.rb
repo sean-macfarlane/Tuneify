@@ -17,12 +17,21 @@ class ProductsController < AuthenticatedController
   def new
     @product = Product.new
 	@categories = Category.all
+	@user_id = session[:user_id]
   end
 
   # GET /products/1/edit
   def edit
+	if current_user 
+		if @product.user_id != current_user.id
+			redirect_to root_path
+		end
+	else 
+		redirect_to root_path
+	end
+  
 	@product = Product.find(params[:id])
-	@categories = Category.all
+     @categories = Category.all
   end
   
   def show_categories
@@ -34,6 +43,7 @@ class ProductsController < AuthenticatedController
   def create
     @categories = Category.all
 	@product = Product.new(product_params)
+	@product.user_id = current_user.id if current_user
 	
 	shop = ShopifyAPI::Shop.current
     new_product = ShopifyAPI::Product.new

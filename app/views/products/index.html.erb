@@ -6,12 +6,11 @@
 <% @products.each do |product| %>
   <tr><div class="row featurette">
 <td><div class="col-md-4">
-		
+		<%= link_to image_tag(product.image.url, class: 'media-object picture'), product %>
 	</div>
 	<div class="col-md-8">
 		<h2><%= link_to product.name, product %></h2>
 		<p><%= product.description %></p>
-		<p><%= number_to_currency(product.price, :unit => '$') %></p>
 	</div></td>
 </div></tr>
 <% end %>

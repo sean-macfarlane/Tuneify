@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-
+	belongs_to :user
 	belongs_to :category
 	validates_presence_of :name
 	has_attached_file :image

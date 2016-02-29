@@ -4,7 +4,13 @@ class CategoriesController < AuthenticatedController
   # GET /categories
   # GET /categories.json
   def index
-
+	if logged_in? 
+		if !current_user.isAdmin
+			redirect_to root_path
+		end
+	else
+		redirect_to root_path
+	end
     @categories = Category.all
   end
 
@@ -12,16 +18,28 @@ class CategoriesController < AuthenticatedController
   # GET /categories/1.json
   def show
   end
-
+	
   # GET /categories/new
   def new
-
+	if logged_in? 
+		if !current_user.isAdmin
+			redirect_to root_path
+		end
+	else
+		redirect_to root_path
+	end
     @category = Category.new
   end
 
   # GET /categories/1/edit
   def edit
-
+	if logged_in? 
+		if !current_user.isAdmin
+			redirect_to root_path
+		end
+	else
+		redirect_to root_path
+	end
   end
 
   # POST /categories

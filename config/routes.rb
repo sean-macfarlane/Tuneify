@@ -2,6 +2,19 @@ Rails.application.routes.draw do
   
   resources :categories
   resources :products
+  resources :users
+
+  root :to => 'home#index'
+  
+  get 'cart' => 'cart#index' 
+  get 'cart/clear' => 'cart#clearCart'
+  get 'cart/:id' => 'cart#add'
+  
+  get 'signup'  => 'users#new'
+  get    'user_login'   => 'user_sessions#new'
+  post   'user_login'   => 'user_sessions#create'
+  delete 'user_logout'  => 'user_sessions#destroy'
+  
   controller :sessions do
     get 'login' => :new, :as => :login
     post 'login' => :create, :as => :authenticate
@@ -10,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   get 'products/show_categories'
-  root :to => 'home#index'
+ 
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

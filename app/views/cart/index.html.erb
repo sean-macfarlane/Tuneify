@@ -1,0 +1,33 @@
+<h1>Cart: </h1>
+
+<% total = 0 %>
+
+<% @cart.each do | id, quantity | %>
+	<div class="row featurette">
+	<% product = Product.find_by_id(id) %>
+		<div class="col-md-8">
+			<b><%= link_to product.name, product %></b> 
+			<p><%= product.description %></p>		
+		</div>
+		<div class="col-md-4">
+			<%= number_to_currency(product.price, :unit => '$') %>	
+		</div>
+	</div>
+	<% total += product.price %>
+<% end %>	
+<hr>
+<div class="row featurette">
+	<div class="col-md-8">
+		<% if @cart.blank? %>
+			<p>Cart is currrently empty.</p>
+		<% else %>
+			<%= link_to 'Empty Cart', cart_clear_path %>
+		<% end %>
+	</div>
+	<div class="col-md-4">
+		<b><%= number_to_currency(total, :unit => '$') %></b>
+	</div>
+</div>
+<div class="row featurette">
+	
+</div>
