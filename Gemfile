@@ -6,6 +6,7 @@ gem 'rails', '4.2.5.1'
 
 gem 'rails_12factor', group: :production
 gem 'paperclip'
+gem 'aws-sdk'
 gem 'rails-ajax'
 gem 'bootstrap-sass'
 # Use postgresql as the database for Active Record
