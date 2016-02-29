@@ -11,10 +11,7 @@ class ThankyouController < AuthenticatedController
 	def download
 	@product = Product.find(params[:id])
 
-	  send_file @product.audio.url,
-				  :filename => @product.audio_file_name,
-				  :type => @product.audio_content_type,
-				  :disposition => 'attachment'
+	  send_file (@product.audio.url)
 end
 end
 	
