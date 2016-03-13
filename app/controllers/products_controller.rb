@@ -55,8 +55,14 @@ class ProductsController < AuthenticatedController
 	new_product.body_html = @product.description
 	new_product.product_type = "Song"
 	new_product.vendor = "Tuneify"
-	new_product.variants = ShopifyAPI::Variant.new()	
-	new_product.save 
+	new_product.variants = ShopifyAPI::Variant.new	
+	new_product.save
+	
+	variant = ShopifyAPI::Variant.find(new_product.variants[0].id)	
+	variant.price = @product.price
+	variant.requires_shipping = false
+	variant.save
+	
 	@product.shopify_id = new_product.variants[0].id
 	
     respond_to do |format|
