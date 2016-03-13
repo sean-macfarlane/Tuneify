@@ -18,7 +18,7 @@
 <p>
   <%= @product.description %>
   <br>
-  $<%= @product.price %>
+  <h3>$<%= @product.price %></h3>
   <br>
   <%= link_to "Add to cart", {:controller => "cart", :action => "add", :id => @product.id }%>
 </p>
