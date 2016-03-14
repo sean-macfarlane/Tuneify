@@ -10,28 +10,48 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+
+
+
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery.jplayer
 //= require jquery.history
 //= require jquery.rails-ajax
 //= require RailsAjax-Config
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require_tree .
-
 
 
  $(document).on('page:change', function () {
+	 $("#jquery_jplayer_1").jPlayer({
+        cssSelectorAncestor: "#jp_container_1",
+        swfPath: "/js",
+		wmode: "window",
+        supplied: "m4a, oga, mp3",
+        useStateClassSkin: true,
+        autoBlur: false,
+        smoothPlayBar: true,
+        keyEnabled: true,
+        remainingDuration: true,
+        toggleDuration: true
+      });
+
+	 
     var audioSection = $('section#song');
 	$(document).on("click", 'a.play_song', function(e) {
-        var audio = $('<audio>', {
-             controls : 'controls'
-        });
- 
-        var url = $(this).attr('href');
-        $('<source>').attr('src', url).appendTo(audio);
-        audioSection.html(audio);
+        $("#jquery_jplayer_1")
+        .jPlayer("setMedia", {mp3: this.href })
+        .jPlayer("play");
         return false;
     });
 });
+
+
+
+
+
+
+

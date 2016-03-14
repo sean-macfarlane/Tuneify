@@ -10,7 +10,7 @@
 </p>
 <% if current_user %>
 <% if @user.id == current_user.id %>
-<%= link_to 'Edit Account', edit_user_path(@user) %> 
+<%= link_to 'Edit Account', edit_user_path(@user), :class => "btn" %> 
 <% end %>
 <% end %>
 </div>
@@ -32,7 +32,7 @@
 		<div class="col-md-8">
 			<h2><%= link_to product.name, product %></h2>
 			<p><%= product.description %></p>
-			<%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+			<%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn" %>
 		</div>
 	</div></td>
 	</tr>

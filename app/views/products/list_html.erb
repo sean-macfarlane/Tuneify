@@ -1,9 +1,0 @@
-<ul id = "products">
-   <% @products.each do |c| %>
-   <li>
-   <%= link_to c.name, {:action => 'show', :id => c.id} -%>
-   <b> <%= link_to 'Edit', {:action => 'edit', :id => c.id} %></b>
-   <b> <%= link_to 'Destroy', c, method: :delete, data: { confirm: 'Are you sure?' } %></b>
-</li>
-   <% end %>
-</ul>

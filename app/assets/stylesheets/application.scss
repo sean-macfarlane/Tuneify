@@ -24,10 +24,11 @@ h1 {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 80px;
-  background-color: #f5f5f5;
+  height: 100px;
+  background-color: #EEEEEE;
   padding-left: 100px;
   padding-top: 10px;
+
 }
 .menuitem {
     margin-top: 50px;
@@ -77,6 +78,7 @@ h1 {
 	-webkit-box-shadow: 0px 1px 3px #666666;
 	-moz-box-shadow: 0px 1px 3px #666666;
 	box-shadow: 0px 1px 3px #666666;
+	outline: none;
   
 }
 

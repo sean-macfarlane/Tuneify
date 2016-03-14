@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <h4><%= link_to '< Back', products_path %></h4>
 <br />
 <br />
@@ -10,6 +12,11 @@
             <div class="col-md-8">		
 <h1>
   <%= @product.name %> 
+  <% if current_user %>
+<% if @product.user_id == current_user.id %>
+<%= link_to 'Edit', edit_product_path(@product), :class => "btn"  %>
+<% end %>
+<%end %>
 </h1>
 
 <p>
@@ -20,17 +27,13 @@
   <br>
   <h3>$<%= @product.price %></h3>
   <br>
-  <%= link_to "Add to cart", {:controller => "cart", :action => "add", :id => @product.id }%>
+  <%= button_to "Add to cart", {:controller => "cart", :action => "add", :id => @product.id }, :method => "get", :class => "btn"  %>
 </p>
 
-<%= link_to "Play Song", @product.audio.url, :class => "play_song", remote:true%>
+<%= link_to "Play Song", @product.audio.url, :class => "play_song btn", remote:true%>
 <br/>
 <br/>
-<% if current_user %>
-<% if @product.user_id == current_user.id %>
-<h4><%= link_to 'Edit', edit_product_path(@product) %></h4>
-<% end %>
-<%end %>
+
 
 
 

@@ -23,7 +23,7 @@
 		<% if @cart.blank? %>
 			<p>Cart is currrently empty.</p>
 		<% else %>
-			<%= link_to 'Empty Cart', cart_clear_path %>
+			<%= link_to 'Empty Cart', cart_clear_path, :class => "btn" %>
 		<% end %>
 	</div>
 	<div class="col-md-4">
@@ -34,6 +34,8 @@
 <div class="col-md-8">
 </div>
 <div class="col-md-4">
-	<%= link_to "Checkout", checkout_url, remote:false %>
+<% if !@cart.blank? %>
+	<%= link_to "Checkout", checkout_url, remote:false, :class => "btn" %>
+<% end %>
 </div>
 </div>

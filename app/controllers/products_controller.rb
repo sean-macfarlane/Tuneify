@@ -1,4 +1,4 @@
-class ProductsController < AuthenticatedController
+class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -6,21 +6,18 @@ class ProductsController < AuthenticatedController
   def index
     @products = Product.all
   end
-  
-  def list
-    @products = Product.all
-  end
-  
+
   # GET /products/1
   # GET /products/1.json
   def show
 	@product = Product.find(params[:id])
   end
 
+  
   # GET /products/new
   def new
     @product = Product.new
-	@categories = Category.all
+    @categories = Category.all
 	@user_id = session[:user_id]
   end
 
@@ -37,19 +34,20 @@ class ProductsController < AuthenticatedController
 	@product = Product.find(params[:id])
      @categories = Category.all
   end
-  
+
   def show_categories
       @category = Category.find(params[:id])
    end
-
+  
   # POST /products
   # POST /products.json
   def create
-    @categories = Category.all
-	@product = Product.new(product_params)
+    @product = Product.new(product_params)
+	@categories = Category.all
 	@product.user_id = current_user.id if current_user
 	
-	shop = ShopifyAPI::Shop.current
+	ShopifyAPI::Base.site = "https://3cc4777fa0a4e64622d58af9ae8c8edf:dfb10343edec3c735e3be99fb6df2f15@tuneify-2.myshopify.com/admin"
+
     new_product = ShopifyAPI::Product.new
 	new_product.title = @product.name
 	new_product.body_html = @product.description
@@ -67,7 +65,6 @@ class ProductsController < AuthenticatedController
 	
     respond_to do |format|
       if @product.save
-		
         format.html { redirect_to @product, success: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -80,6 +77,8 @@ class ProductsController < AuthenticatedController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+  @categories = Category.all
+  
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, success: 'Product was successfully updated.' }
@@ -96,7 +95,7 @@ class ProductsController < AuthenticatedController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, success: 'Product was successfully destroyed.' }
+      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

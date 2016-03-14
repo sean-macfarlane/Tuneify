@@ -1,4 +1,4 @@
-class CartController < AuthenticatedController
+class CartController < ApplicationController
 	before_action :logged_in!
 
 	def add
@@ -10,10 +10,11 @@ class CartController < AuthenticatedController
 				cart = session[:cart]
 			end
 			
-			if cart[id] 
-				cart[id] = cart[id] + 1
-			else	
-				cart[id] = 1
+			product = Product.find_by_id(id)
+			if product				
+				if !cart[id] 
+					cart[id] = 1
+				end
 			end
 		redirect_to :action => :index
 	end

@@ -1,4 +1,4 @@
-class UsersController < AuthenticatedController
+class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -39,7 +39,7 @@ class UsersController < AuthenticatedController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
+	
     respond_to do |format|
       if @user.save
 	    log_in @user

@@ -1,4 +1,4 @@
-class CategoriesController < AuthenticatedController
+class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
@@ -18,7 +18,7 @@ class CategoriesController < AuthenticatedController
   # GET /categories/1.json
   def show
   end
-	
+
   # GET /categories/new
   def new
 	if logged_in? 
