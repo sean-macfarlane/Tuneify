@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
 
   resources :categories
-  resources :products
-  resources :users
+  resources :products  do
+    resources :comments
+  end
+
+resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :comments
+resources :relationships,       only: [:create, :destroy]
 
   root :to => 'products#index'
   

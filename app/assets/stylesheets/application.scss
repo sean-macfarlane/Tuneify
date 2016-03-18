@@ -1,6 +1,5 @@
 @import "bootstrap";
 
-
 html {
   position: relative;
   min-height: 100%;
@@ -8,11 +7,21 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 100px;
+  margin-top: 60px;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Lato', sans-serif;
+}
+
+p {
+  font-family: 'Lora', serif;
 }
 
 .navbar {
-	padding-right: 100px;
-	padding-left: 100px;
+	font-family: 'Lato', sans-serif;
+	padding-right: 200px;
+	padding-left: 200px;
 }
 
 h1 {
@@ -20,16 +29,16 @@ h1 {
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 100px;
   background-color: #EEEEEE;
   padding-left: 100px;
-  padding-top: 10px;
-
+  z-index: 2;
 }
+
 .menuitem {
     margin-top: 50px;
 }
@@ -40,8 +49,8 @@ h1 {
     border : none;
 }
 .container-fluid{
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 200px;
+    padding-right: 200px;
     padding-top: 10px;
     padding-bottom: 50px;
 }
@@ -100,9 +109,6 @@ text-align: left;
     background-color: none;
 }
 
-#sidebar {
-    padding-top: 5px;
-}
 
 #error_explanation {
   color: red;
@@ -119,10 +125,29 @@ text-align: left;
   }
 }
 
+.logo {
+	padding: 0;
+	margin: 0;
+	padding-top: 5px;
+	margin-right: -10px;
+}
+
+
+.display_picture {
+
+	width: 300px;
+
+}
+
 .picture {
 
-width: 200px;
+	width: 200px;
+}
 
+.profilepic {
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
 }
 
 .round-image-50 {
@@ -139,7 +164,71 @@ width: 200px;
 }
 
 .hidden {
-
-display: none;
+	display: none;
 }
+
+
+#wrapper {
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper {
+  left: 100px;
+  width: 250px;
+  margin: 20px;
+  position: fixed;
+  height: 100%;
+  transition: all 0.4s ease 0s;
+}
+
+#page-content-wrapper {
+  width: 100%;
+  margin-left: 100px;
+}
+
+@media (max-width:767px) {
+
+    #wrapper {
+      padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+      left: 0;
+    }
+
+    #wrapper.active {
+      position: relative;
+      left: 250px;
+    }
+
+    #wrapper.active #sidebar-wrapper {
+      left: 250px;
+      width: 250px;
+      transition: all 0.4s ease 0s;
+    }
+}
+
+
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: #0EB2E8;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
 

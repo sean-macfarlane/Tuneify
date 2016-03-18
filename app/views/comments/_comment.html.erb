@@ -1,0 +1,26 @@
+
+<%= div_for(comment) do %>
+<% user = User.find(comment.user_id) %>
+<tr>
+<td>
+ <div class="row featurette">
+            <div class="col-md-1">
+				<%= link_to image_tag(user.image.url, class: 'media-object round-image-50'), :controller => "users", :action => "show", :id => user.id %>
+			</div>
+			<div class="col-md-4">
+				<p>
+					<strong><%= link_to user.username, :controller => "users", :action => "show", :id => user.id %></strong>
+					<br>
+					<%= h(comment.text) %><br>
+					<strong>Posted <%= time_ago_in_words(comment.created_at) %> ago</strong>
+				</p>
+			</div>		
+			<% if !current_user?(@user) %>
+			<div class="col-md-1">
+				<%= link_to 'Delete', [@product, comment], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn" %>			
+			</div>
+			<% end %>
+	</div>
+</td>
+</tr>
+<% end %>	

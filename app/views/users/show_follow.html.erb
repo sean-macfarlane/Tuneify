@@ -1,0 +1,14 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <aside class="col-md-2 text-center">
+    <%= render 'user_info' %>
+  </aside>
+  <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @users.any? %>
+      <table class="table table-bordered">
+        <%= render @users %>
+      </table>
+    <% end %>
+  </div>
+</div>

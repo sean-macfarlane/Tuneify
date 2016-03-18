@@ -1,0 +1,33 @@
+ <div class="row featurette"> 
+		<%= image_tag(@user.image.url, class: 'media-object picture profilepic center-block')%>
+		<br>
+		<p>
+		  <%= @user.email %>
+		</p>
+		
+		<% @user ||= current_user %>
+		<div class="stats">
+			<div class="col-md-6">
+				  <a href="<%= following_user_path(@user) %>">
+				  Following:
+					<strong id="following" class="stat">
+					  <%= @user.following.count %>
+					</strong>
+				  </a>
+			</div>
+			<div class="col-md-6">
+				  <a href="<%= followers_user_path(@user) %>">
+				  Followers:
+					<strong id="followers" class="stat">
+					  <%= @user.followers.count %>
+					</strong>
+				  </a>
+				  </div>
+		</div>
+		<br>
+		<%= render 'follow_form' if logged_in? %>
+		<br/>
+		<% if current_user?(@user) %>
+			<%= link_to 'Edit Account', edit_user_path(@user), :class => "btn" %> 
+		<% end %>
+	</div>

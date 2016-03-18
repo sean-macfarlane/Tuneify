@@ -36,7 +36,10 @@
         smoothPlayBar: true,
         keyEnabled: true,
         remainingDuration: true,
-        toggleDuration: true
+        toggleDuration: true,
+		size: {
+				 width: "400px"
+               }
       });
 
 	 

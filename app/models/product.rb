@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
    belongs_to :category
    belongs_to :user
+   has_many :comments, dependent: :destroy
    validates_presence_of :name
 
 has_attached_file :image

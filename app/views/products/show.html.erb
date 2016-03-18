@@ -1,40 +1,72 @@
 <p id="notice"><%= notice %></p>
 
-<h4><%= link_to '< Back', products_path %></h4>
-<br />
-<br />
-
-
  <div class="row featurette">
             <div class="col-md-4">
-                <%=  image_tag(@product.image.url, class: 'media-object picture') %>
+                <%=  image_tag(@product.image.url, class: 'media-object display_picture') %>
             </div>
-            <div class="col-md-8">		
-<h1>
-  <%= @product.name %> 
-  <% if current_user %>
-<% if @product.user_id == current_user.id %>
-<%= link_to 'Edit', edit_product_path(@product), :class => "btn"  %>
-<% end %>
-<%end %>
-</h1>
+            <div class="col-md-8">	
+			<div class="row" >
+				<div class="col-md-2">
+					<%= link_to image_tag("play.png", class: 'media-object'), @product.audio.url, :class => "play_song", remote:true%>				
+				</div>
+				<div class="col-md-8">					
+					<h1>
+					  <%= @product.name %> 
+					  <% if current_user %>
+					<% if @product.user_id == current_user.id %>
+					<%= link_to 'Edit', edit_product_path(@product), :class => "btn"  %>
+					<% end %>
+					<%end %>
+					</h1>
+					<% user = User.find(@product.user_id) %>
+					<h3>  <%= link_to user.username, :controller => "users", :action => "show", :id => user.id %> </h3>
+				</div>
+			</div>
+				<br>
+				<div class="row">
+		<p>
+		  <%= link_to @product.category.name, :controller => "categories", :action => "show", :id => @product.category.id %>
+		</p>
+		<p>
+		  <%= @product.description %>
+		  <br>
+		  <h3>$<%= @product.price %></h3>
+		  <br>
+		  <%= button_to "Add to cart", {:controller => "cart", :action => "add", :id => @product.id }, :method => "get", :class => "btn"  %>
+		</p>
+</div>
+</div>
+</div>
 
-<p>
-  <%= link_to @product.category.name, :controller => "categories", :action => "show", :id => @product.category.id %>
-</p>
-<p>
-  <%= @product.description %>
-  <br>
-  <h3>$<%= @product.price %></h3>
-  <br>
-  <%= button_to "Add to cart", {:controller => "cart", :action => "add", :id => @product.id }, :method => "get", :class => "btn"  %>
-</p>
+<br>
+<br>
+<div class="row featurette">
+		<% if current_user %>
 
-<%= link_to "Play Song", @product.audio.url, :class => "play_song btn", remote:true%>
-<br/>
-<br/>
-
-
-
-
+		<%= form_for [@product, Comment.new]	do |f| %>
+		<p>
+			<strong>Post a Comment:</strong><br>
+			<%= f.text_area :text, :label => "New Comment" %> 
+		</p>
+		<p><%= f.submit "Add Comment", class: "btn btn-primary", remote:true %></p>
+		<% end %>
+		<% end %>
+		<br>
+		<% if @product.comments.count == 1 %>
+			<H4><%= @product.comments.count %> Comment:</H4>
+		<% else %>
+			<H4><%= @product.comments.count %> Comments:</H4>
+		<% end %>
+		
+		<% if @product.comments.blank? %>
+			<p> There are currently no comments.</p>
+		<% else %>		
+		<div id="comments">
+			<table class="table table-bordered">
+			<%= render :partial => @product.comments %>
+			</table>
+		</div>		
+		<% end %>
+		
+</div>
 

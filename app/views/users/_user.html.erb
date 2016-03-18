@@ -1,0 +1,12 @@
+<tr>
+<td>
+ <div class="row featurette">
+	<div class="col-md-1">
+		<%= link_to image_tag(user.image.url, class: 'media-object round-image-50'), :controller => "users", :action => "show", :id => user.id %>
+	</div>
+	<div class="col-md-4">
+		<%= link_to user.username, user %>
+	</div>
+</div>
+</td>
+</tr>  
