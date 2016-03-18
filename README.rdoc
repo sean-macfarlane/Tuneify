@@ -2,4 +2,7 @@
 
 This is a music streaming application I created with Ruby on Rails, Shopify, PostgreSQL, Amazon S3, AJAX, Bootstrap, and JQuery. It allows Users to sign up for an account, login, upload songs, stream songs, and buy/sell songs. You can stream the songs continuously throughout the application. And you can purchase songs through Shopify.
 
+DEMO: 
+https://tuneify-.herokuapp.com/
+
 - Sean Macfarlane
